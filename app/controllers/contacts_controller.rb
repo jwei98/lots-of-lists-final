@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:create,:search,:edit,:show,:destroy]
   # GET /contacts
   # GET /contacts.json
   def index
@@ -9,9 +9,9 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.order(params[:sort])
     end
-    
   end
 
+  
   # GET /contacts/1
   # GET /contacts/1.json
   def show
