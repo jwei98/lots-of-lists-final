@@ -4,6 +4,8 @@ class Contact < ActiveRecord::Base
     validates :number, :presence => true,
                       :length => { :minimum => 12 }
    
+    has_many :comments
+    
     def self.search(search)
       where("name LIKE ?", "%#{search}%") 
     end

@@ -9,11 +9,13 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.order(params[:sort])
     end
+    
   end
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    
   end
 
   # GET /contacts/new
@@ -28,6 +30,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
+
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
@@ -60,12 +63,12 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to contacts_url, notice: 'Contact was successfully deleted.' }
       format.json { head :no_content }
     end
   end
 
-  private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
@@ -75,4 +78,6 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:name, :number)
     end
+    
+    
 end

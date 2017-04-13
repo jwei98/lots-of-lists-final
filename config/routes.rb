@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :contacts
+  resources :contacts do
+    resources :comments
+  end
   get '/application/index'
   root 'application#index'
   get '/contacts' => 'contacts#show'
