@@ -1,13 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All Contacts</h1>
-
-<%= form_tag(contacts_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Contacts" %>
-<%= submit_tag "Search" %>
-<% end %>
-
-<p>Click on column header to sort by category</p>
+<h1>My Contacts</h1>
 
 <table>
   <thead>

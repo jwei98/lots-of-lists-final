@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   root 'application#index'
   get '/contacts' => 'contacts#show'
   get '/contacts/new' => 'contacts#new'
+  get '/mycontacts' => 'contacts#mycontacts'
 end

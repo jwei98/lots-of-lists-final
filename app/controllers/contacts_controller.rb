@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create,:search,:edit,:show,:destroy]
+  before_action :authenticate_user!, only: [:create,:search,:edit,:show,:destroy,:mycontacts, :index]
   # GET /contacts
   # GET /contacts.json
   def index
@@ -9,6 +9,10 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.order(params[:sort])
     end
+  end
+  
+  def mycontacts
+    @contacts = current_user.contacts.order(params[:sort])
   end
 
   
@@ -32,7 +36,7 @@ class ContactsController < ApplicationController
   def create
 
     @contact = Contact.new(contact_params)
-
+    @contact.user = current_user
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
